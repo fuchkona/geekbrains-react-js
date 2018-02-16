@@ -2,6 +2,8 @@ import React from "react";
 
 import News from '../news/news';
 
+import './app.css';
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -29,19 +31,21 @@ class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={'container'}>
                 Привет я могу отобразить новости!<br/>
-                <input type="text" ref={ (input) => { this.inputNewsTitle = input; } }/>
+                <input type="text" ref={ (input) => {
+                    this.inputNewsTitle = input;
+                } }/>
                 <button onClick={ () => this.handleClick() }>
                     Добавить новость
                 </button>
-                <News items={ this.state.news } onHandleClick={ this.handleNewsClick } />
+                <News items={ this.state.news } onHandleClick={ this.handleNewsClick }/>
             </div>
         );
     }
 
     handleClick() {
-        let { news } = this.state;
+        let {news} = this.state;
 
         news.push({
             title: this.inputNewsTitle.value,
