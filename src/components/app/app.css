@@ -2,3 +2,25 @@
     width: 1200px;
     margin: 0 auto;
 }
+
+.text-title {
+    margin: 5px 0;
+}
+
+.btn {
+    padding: 5px 15px;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.btn:hover {
+    background-color: lightgrey;
+}
+
+input, textarea {
+    min-width: 40%;
+}
+
+h2 {
+    margin: 5px 0;
+}

@@ -9,6 +9,7 @@ class App extends React.Component {
         super(props);
 
         this.inputNewsTitle;
+        this.inputNewsDescription;
 
         this.state = {
             news: [
@@ -32,13 +33,22 @@ class App extends React.Component {
     render() {
         return (
             <div className={'container'}>
-                Привет я могу отобразить новости!<br/>
-                <input type="text" ref={ (input) => {
-                    this.inputNewsTitle = input;
-                } }/>
-                <button onClick={ () => this.handleClick() }>
-                    Добавить новость
-                </button>
+                <h2>Привет я могу отобразить новости!</h2>
+                <hr/>
+                <div className={'add-news'}>
+                    <h3>Добавить новость</h3>
+                    <p className={'text-title'}>Заголовок</p>
+                    <input type="text" ref={ (input) => {
+                        this.inputNewsTitle = input;
+                    } }/>
+                    <p className={'text-title'}>Описание</p>
+                    <textarea ref={ (input) => {
+                        this.inputNewsDescription = input;
+                    } }/><br/>
+                    <button className={'btn'} onClick={ () => this.handleClick() }>
+                        Добавить новость
+                    </button>
+                </div>
                 <News items={ this.state.news } onHandleClick={ this.handleNewsClick }/>
             </div>
         );
@@ -49,10 +59,11 @@ class App extends React.Component {
 
         news.push({
             title: this.inputNewsTitle.value,
-            descr: 'Больше'
+            descr: this.inputNewsDescription.value
         });
 
         this.inputNewsTitle.value = '';
+        this.inputNewsDescription.value = '';
         this.inputNewsTitle.focus();
 
 
