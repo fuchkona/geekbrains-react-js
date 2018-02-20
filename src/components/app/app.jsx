@@ -69,10 +69,6 @@ class App extends React.Component {
 
         this.setState(news);
     }
-
-    handleNewsClick(params) {
-        console.log('####: params: ', params);
-    }
 }
 
 export default App;

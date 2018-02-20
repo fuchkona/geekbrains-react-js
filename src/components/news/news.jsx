@@ -1,12 +1,12 @@
 import React from "react";
 
 import './news.css';
+import NewsDescr from "../newsDescr/newsDescr";
 
 class News extends React.Component {
 
     constructor(props) {
         super(props);
-        console.log('####: constructor: ');
 
         this.state = {
             visible: false
@@ -15,7 +15,6 @@ class News extends React.Component {
 
 
     render() {
-        console.log('####: render: ');
         const { items } = this.props;
 
         return items.length === 0
@@ -41,26 +40,14 @@ class News extends React.Component {
                     <h2 className={ 'news__title' }>
                         { item.title }
                     </h2>
+                    <hr/>
                     <div className={ 'news__descr' }>
-                        { item.descr }
+                        { item.descr.substring(0, 60) + '...' }
                     </div>
-                    <a href="#" onClick={ (e) => this.handleClick(e) }>
-                        { this.state.visible ? 'Скрыть...' : 'Подробнее...' }
-                    </a>
-                    { this.state.visible ? <div className={ 'news__full_descr' }>Полное описание...</div> : null }
+                    <NewsDescr descr={ item.descr } />
                 </div>
             );
         });
-    }
-
-    handleClick(e) {
-        e.preventDefault();
-
-        this.setState({
-            visible: !this.state.visible
-        });
-
-        this.props.onHandleClick(this.state.visible);
     }
 
 }
